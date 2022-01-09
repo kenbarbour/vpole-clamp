@@ -1,9 +1,8 @@
 module uhf_spacer(
-  size=[40, 40, 18],
+  size=[35, 35, 18],
   bolt_spacing=17.5,
-  bolt_offset=[0,0],
-  bolt_d=3.5,
-  center_d=16,
+  bolt_d=4.2,
+  center_d=17,
   cb_depth=0,
   cb_diameter=0,
 ) {

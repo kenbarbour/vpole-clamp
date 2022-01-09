@@ -10,13 +10,15 @@ use <uhf_spacer.scad>
  *  6     18               3           1       4  = 
  */
 module cap(
-  size=[40, 40, 10],
+  size=[35, 35, 10],
   bolt_spacing=17.5,
-  bolt_d=3.5,
-  wire_d=1.5,
+  bolt_d=4.2,
+  wire_d=2.5,
   angle=120,
-  counterbore_depth=4,
-  counterbore_diameter=6
+  center_offset=1.5,
+  counterbore_depth=5,
+  counterbore_diameter=8,
+  rear_clearance=1
 ) {
 
   difference() {
@@ -28,7 +30,9 @@ module cap(
       cb_depth=counterbore_depth,
       cb_diameter=counterbore_diameter
     );
-
+    
+    // Groove for antenna wire
+    translate([0, center_offset, 0]) {
     for (i = [-1, 1]) {
       rotate([0,0,-i*angle*0.5])
       rotate([90, 0, 0]) {
@@ -36,6 +40,11 @@ module cap(
       }
     }
     cylinder(r=wire_d, h=wire_d/2);
+    }
+
+    // Rear clearance
+    translate([0, size[1]/2 - rear_clearance/2, size[2]/2 - 1])
+      cube([size[0], rear_clearance, size[2] + 2], center=true);
   }
 }
 

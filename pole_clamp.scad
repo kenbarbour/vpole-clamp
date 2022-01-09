@@ -1,15 +1,15 @@
 use <util.scad>
 
 module pole_clamp(
-  id=23,
+  id=24,
   h=27,
-  w=40,
+  w=35,
   slot=3,
-  bolt_d=6.5,
+  bolt_d=6.3,
   bolt_z_offset=0,   // distance off-center
   bolt_y_offset=0,   // distance off-tangent of main bore
-  bolt_hex=11.5,     // wrench size for hex-nut
-  bolt_hex_height=6, // thickness of hex-nut
+  bolt_hex=8.1,     // wrench size for hex-nut
+  bolt_hex_height=4, // thickness of hex-nut
   nut_x_offset=1,    // x-position of captive hex-nut
   $e=1
 ) {
