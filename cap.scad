@@ -18,7 +18,8 @@ module cap(
   center_offset=1.5,
   counterbore_depth=5,
   counterbore_diameter=8,
-  rear_clearance=1
+  rear_clearance=1,
+  $e=1
 ) {
 
   difference() {
@@ -43,9 +44,9 @@ module cap(
     }
 
     // Rear clearance
-    translate([0, size[1]/2 - rear_clearance/2, size[2]/2 - 1])
-      cube([size[0], rear_clearance, size[2] + 2], center=true);
+    translate([0, size[1]/2 - rear_clearance/2 + $e/2, size[2]/2])
+      cube([size[0]+(2*$e), rear_clearance + $e, size[2] + 2], center=true);
   }
 }
 
-cap($fn=16);
+cap();
