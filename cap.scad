@@ -1,4 +1,5 @@
 use <uhf_spacer.scad>
+use <util.scad>
 
 /**
  * This cap is designed to hold antenna elements
@@ -19,6 +20,7 @@ module cap(
   counterbore_depth=5,
   counterbore_diameter=8,
   rear_clearance=1,
+  front_fillet=5,
   $e=1
 ) {
 
@@ -40,7 +42,15 @@ module cap(
         cylinder(r=wire_d/2, h=pow(size[0], 2));
       }
     }
-    cylinder(r=wire_d, h=wire_d/2);
+    translate([0, 0, 0-$e])
+      cylinder(r=wire_d, h=wire_d/2+$e);
+    }
+
+    // Fillet front corners
+    for (i = [-1, 1]) {
+      translate([i*size[0]/2, size[1]/-2, 0-$e])
+      scale([-1*i, 1, 1])
+      fillet(r=front_fillet, h=size[2]+(2*$e), extra=2*$e);
     }
 
     // Rear clearance
