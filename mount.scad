@@ -4,7 +4,7 @@ use <pole_clamp.scad>;
 
 width = 35;                 // Overall design width
 connector_depth = 18;       // depth of portion housing connector and wiring
-clamp_id = 24;           // Bore size of pole clamp
+clamp_id = 23.25;           // Bore size of pole clamp
 antenna_id = 16;            // Bore size for antenna connector
 bolt_size = 4.2;            // Clearance hole for connector bolts
 
