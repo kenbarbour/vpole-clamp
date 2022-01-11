@@ -33,14 +33,18 @@ module cap(
     );
     
     // Groove for antenna wire
+    extra_long=pow(size[0], 2);
     translate([0, center_offset, 0]) {
-    for (i = [-1, 1]) {
-      rotate([0,0,-i*angle*0.5])
-      rotate([90, 0, 0]) {
-        cylinder(r=wire_d/2, h=pow(size[0], 2));
+      for (i = [-1, 1]) {
+        translate([0, 0, wire_d/2])
+        rotate([0,0,-i*angle*0.5])
+        rotate([90, 0, 0]) {
+          cylinder(r=wire_d/2, h=extra_long);
+          translate([0,wire_d/-2,extra_long/2])
+            cube([wire_d, wire_d, extra_long], center=true);
+        }
       }
-    }
-    cylinder(r=wire_d, h=wire_d/2);
+      sphere(r=wire_d);
     }
 
     // Rear clearance
@@ -49,4 +53,4 @@ module cap(
   }
 }
 
-cap();
+cap($fn=25);
