@@ -11,13 +11,13 @@ use <util.scad>
  *  6     18               3           1       4  = 
  */
 module cap(
-  size=[35, 35, 10],
+  size=[35, 35, 8],
   bolt_spacing=17.5,
   bolt_d=4.2,
-  wire_d=2.5,
+  wire_d=4.7,
   angle=120,
-  center_offset=1.5,
-  counterbore_depth=5,
+  center_offset=4,
+  counterbore_depth=4,
   counterbore_diameter=8,
   rear_clearance=1,
   front_fillet=5,
@@ -33,22 +33,6 @@ module cap(
       cb_depth=counterbore_depth,
       cb_diameter=counterbore_diameter
     );
-    
-    // Groove for antenna wire
-    extra_long=pow(size[0], 2);
-    translate([0, center_offset, 0]) {
-      for (i = [-1, 1]) {
-        translate([0, 0, wire_d/2])
-        rotate([0,0,-i*angle*0.5])
-        rotate([90, 0, 0]) {
-          cylinder(r=wire_d/2, h=extra_long);
-          translate([0,wire_d/-2,extra_long/2])
-            cube([wire_d, wire_d, extra_long], center=true);
-        }
-      }
-      translate([0, 0, 0-$e])
-        cylinder(r=wire_d, h=wire_d+$e);
-    }
 
     // Fillet front corners
     for (i = [-1, 1]) {
@@ -62,5 +46,6 @@ module cap(
       cube([size[0]+(2*$e), rear_clearance + $e, size[2] + 2], center=true);
   }
 }
+
 
 cap($fn=25);
