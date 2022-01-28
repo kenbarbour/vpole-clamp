@@ -12,4 +12,4 @@ mount: mount.stl
 cap: cap.stl
 
 clean:
-	rm -f *.stl
+	rm -f *.stl *.gcode
