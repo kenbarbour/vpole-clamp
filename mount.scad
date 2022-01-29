@@ -13,7 +13,7 @@ wire_x_offset = 3;          // Offset position of antenna wire from center axis
 wire_z_offset = 1;          // Offset depth of antenna wire
 
 clamp_id = 24;              // Bore size of pole clamp
-clamp_width = 27;           // Clamp mount width
+clamp_width = 35;           // Clamp mount width
 clamp_bolt_y_offset = 0;    // Offset from bore for bolt hole
 clamp_nut_x_offset = 1;     // Offset from far end to place captive nut
 clamp_slot = 3;             // Width of slot
