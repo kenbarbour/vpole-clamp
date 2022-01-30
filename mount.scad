@@ -14,10 +14,13 @@ wire_z_offset = 1;          // Offset depth of antenna wire
 
 clamp_id = 24;              // Bore size of pole clamp
 clamp_width = 35;           // Clamp mount width
+clamp_bolt = 5;             // Diameter of clampbolt
 clamp_bolt_y_offset = 0;    // Offset from bore for bolt hole
 clamp_nut_x_offset = 1;     // Offset from far end to place captive nut
 clamp_slot = 3;             // Width of slot
 clamp_is_split = 0;         // If true (1), a two-piece clamp will be produced
+clamp_counterbore_depth = 0;    // Depth of counterbore
+clamp_counterbore_diameter = 0; // Diameter of counterbore
 
 module mount() {
   difference() {
@@ -52,7 +55,10 @@ module mount() {
     h=height,
     id=clamp_id,
     slot=clamp_slot,
+    bolt_d=clamp_bolt,
     bolt_y_offset=clamp_bolt_y_offset,
+    bolt_cb_depth=clamp_counterbore_depth,
+    bolt_cb_d=clamp_counterbore_diameter,
     nut_x_offset=clamp_nut_x_offset,
     is_split=clamp_is_split
   );

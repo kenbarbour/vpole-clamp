@@ -10,6 +10,8 @@ module pole_clamp(
   bolt_y_offset=0,   // distance off-tangent of main bore
   bolt_hex=8.1,      // wrench size for hex-nut
   bolt_hex_height=4, // thickness of hex-nut
+  bolt_cb_depth=0,   // depth of counterbore
+  bolt_cb_d=0,       // diameter of counterbore
   nut_x_offset=1,    // x-position of captive hex-nut
   is_split=0,        // if true, generates clamp in two pieces
   $e=1
@@ -35,8 +37,11 @@ module pole_clamp(
       // Clamp bolt hole
       scale([1, i, 1])
       translate([0, (id/-2 - bolt_y_offset), h/2 + bolt_z_offset])
-      rotate([0, 90, 0])
+      rotate([0, 90, 0]) {
         cylinder(r=bolt_d/2, h=w+$e);
+        translate([0, 0, w - bolt_cb_depth])
+          cylinder(r=bolt_cb_d/2, h=bolt_cb_depth + $e);
+      }
 
       // Captive clamp nut
       nut_diameter=bolt_hex / (sqrt(3)/2);
@@ -52,7 +57,7 @@ module pole_clamp(
     }
 
     // It would be nice to know the minimum screw length
-    echo("Minimum screw length: ", w - nut_x_offset);
+    echo("Minimum screw length: ", w - nut_x_offset - bolt_cb_depth);
 
     // Fillet
     if (is_split == 0) {
