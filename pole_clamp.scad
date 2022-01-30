@@ -51,6 +51,9 @@ module pole_clamp(
 
     }
 
+    // It would be nice to know the minimum screw length
+    echo("Minimum screw length: ", w - nut_x_offset);
+
     // Fillet
     if (is_split == 0) {
       translate([w+$e, w/2+$e, 0-$e])
