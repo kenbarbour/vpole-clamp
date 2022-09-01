@@ -9,6 +9,8 @@ all: mount cap
 
 mount: mount.stl
 
+mount_ubolt: mount_ubolt.stl
+
 cap: cap.stl
 
 clean:
