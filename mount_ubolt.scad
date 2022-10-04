@@ -1,6 +1,7 @@
 use <util.scad>;
 use <uhf_spacer.scad>;
 use <vblock_pole_clamp.scad>;
+$fn = 26;
 
 width               = 35;       // Antenna mount width
 height              = 20;       // Overall design thickness
@@ -19,7 +20,8 @@ mount_depth         = 12;
 mount_min_thickness = 2;
 min_bolt_center     = 48;
 bolt_diameter       = 8;
-bolt_slot           = 10;
+bolt_slot           = 8;
+corner_radius       = 3;
 
 
 module mount_ubolt() {
@@ -58,7 +60,8 @@ module mount_ubolt() {
     offset=mount_min_thickness,
     bolt_center=min_bolt_center,
     bolt_diameter=bolt_diameter,
-    bolt_slot=bolt_slot
+    bolt_slot=bolt_slot,
+    corner_radius=corner_radius
   );
 
   //Fillet inside corners (if needed)
